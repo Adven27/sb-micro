@@ -27,9 +27,9 @@ public class WebApp implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         //Search for a flight
-        SearchQuery searchQuery = new SearchQuery("NYC", "SFO", "22-JAN-16");
+        SearchQuery searchQuery = new SearchQuery("SEA", "SFO", "22-JAN-16");
         //Flight[] flights = searchClient.postForObject("http://search-service/search/get", searchQuery, Flight[].class);
         Flight[] flights = searchClient.postForObject("http://localhost:8090/search/get", searchQuery, Flight[].class);
 

@@ -16,5 +16,6 @@
         <module>chapter4.search</module>
         <module>chapter4.website</module>
         <module>chapter4.mq</module>
+        <module>config</module>
     </modules>
 </project>
