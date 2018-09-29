@@ -1,10 +1,11 @@
 package com.brownfield.pss.book;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
+import com.brownfield.pss.book.component.BookingComponent;
+import com.brownfield.pss.book.entity.BookingRecord;
+import com.brownfield.pss.book.entity.Inventory;
+import com.brownfield.pss.book.entity.Passenger;
+import com.brownfield.pss.book.repository.BookingRepository;
+import com.brownfield.pss.book.repository.InventoryRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.brownfield.pss.book.component.BookingComponent;
-import com.brownfield.pss.book.entity.BookingRecord;
-import com.brownfield.pss.book.entity.Inventory;
-import com.brownfield.pss.book.entity.Passenger;
-import com.brownfield.pss.book.repository.BookingRepository;
-import com.brownfield.pss.book.repository.InventoryRepository;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class BookApp implements CommandLineRunner{
@@ -36,7 +35,7 @@ public class BookApp implements CommandLineRunner{
 	}
 
 	@Override
-	public void run(String... strings) throws Exception {
+	public void run(String... strings) {
 		
 		Inventory[] invs = { 
 					new Inventory("BF100", "22-JAN-16", 100),
@@ -51,7 +50,7 @@ public class BookApp implements CommandLineRunner{
 		 
 		
 		BookingRecord booking = new BookingRecord("BF101", "NYC","SFO","22-JAN-16",new Date(),"101");
-		Set<Passenger> passengers = new HashSet<Passenger>();
+		Set<Passenger> passengers = new HashSet<>();
 		passengers.add(new Passenger("Gean","Franc","Male", booking));
 	//	passengers.add(new Passenger("Redi","Ivan","Female",booking));
 	 	

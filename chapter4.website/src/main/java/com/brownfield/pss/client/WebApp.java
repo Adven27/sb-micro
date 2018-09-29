@@ -17,9 +17,9 @@ import java.util.Set;
 public class WebApp implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(WebApp.class);
 
-    RestTemplate searchClient = new RestTemplate();
-    RestTemplate bookingClient = new RestTemplate();
-    RestTemplate checkInClient = new RestTemplate();
+    private RestTemplate searchClient = new RestTemplate();
+    private RestTemplate bookingClient = new RestTemplate();
+    private RestTemplate checkInClient = new RestTemplate();
     RestTemplate restClient = new RestTemplate();
 
     public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class WebApp implements CommandLineRunner {
         Arrays.asList(flights).forEach(flight -> logger.info(" flight >" + flight));
 
         //create a booking only if there are flights.
-        if (flights == null || flights.length == 0) {
+        if (flights.length == 0) {
             return;
         }
         Flight flight = flights[0];

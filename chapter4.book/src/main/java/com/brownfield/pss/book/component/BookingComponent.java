@@ -1,22 +1,20 @@
 package com.brownfield.pss.book.component;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestOperations;
-import org.springframework.web.client.RestTemplate;
-
 import com.brownfield.pss.book.entity.BookingRecord;
 import com.brownfield.pss.book.entity.Inventory;
 import com.brownfield.pss.book.entity.Passenger;
 import com.brownfield.pss.book.repository.BookingRepository;
 import com.brownfield.pss.book.repository.InventoryRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 @Component
 public class BookingComponent {
@@ -40,10 +38,10 @@ public class BookingComponent {
 		this.inventoryRepository = inventoryRepository;
 	}
 	public long book(BookingRecord record) {
-		logger.info("calling fares to get fare");
+		logger.info("calling fares to get fare...");
 		//call fares to get fare
 		Fare fare = restTemplate.getForObject(FareURL +"/get?flightNumber="+record.getFlightNumber()+"&flightDate="+record.getFlightDate(),Fare.class);
-		logger.info("calling fares to get fare "+ fare);
+		logger.info("fare: " + fare);
 		//check fare
 		if (!record.getFare().equals(fare.getFare()))
 			throw new BookingException("fare is tampered");
