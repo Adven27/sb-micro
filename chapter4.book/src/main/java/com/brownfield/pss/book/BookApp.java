@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+@EnableDiscoveryClient
 @EnableFeignClients
 @SpringBootApplication
 public class BookApp implements CommandLineRunner {

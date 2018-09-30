@@ -7,7 +7,6 @@ import com.brownfield.pss.book.repository.InventoryRepository
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.cloud.netflix.feign.FeignClient
-import org.springframework.cloud.netflix.ribbon.RibbonClient
 import org.springframework.stereotype.Component
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
@@ -83,8 +82,7 @@ object BookingStatus {
 
 data class Fare(var flightNumber: String = "", var flightDate: String = "", var fare: String = "")
 
-@FeignClient(name = "fare-client")
-@RibbonClient
+@FeignClient(name = "fares-service")
 interface FareClient {
     @GetMapping("fares/get")
     fun fare(@RequestParam("flightNumber") flightNumber: String, @RequestParam("flightDate") flightDate: String): Fare

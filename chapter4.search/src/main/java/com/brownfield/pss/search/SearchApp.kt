@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient
 import org.springframework.cloud.context.config.annotation.RefreshScope
 import org.springframework.context.annotation.Bean
 import org.springframework.stereotype.Component
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*
 private val FLIGHT_DATE = "22-JAN-16"
 private val COUNT = 100
 
+@EnableDiscoveryClient
 @SpringBootApplication
 class SearchApp @Autowired constructor(private val flightRepository: FlightRepository) : CommandLineRunner {
 
